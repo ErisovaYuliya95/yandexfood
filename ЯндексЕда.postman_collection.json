@@ -1,0 +1,967 @@
+{
+	"info": {
+		"_postman_id": "e915b849-645e-4e8f-8348-225559f78375",
+		"name": "ЯндексЕда",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41268766",
+		"_collection_link": "https://skypro-4529.postman.co/workspace/%D0%9A%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%3A-%D0%9B%D0%B8%D1%87%D0%BD%D1%8B%D0%B5-%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D1%8F~afaf649a-29a2-4612-826b-289dcc1c5113/collection/41268766-e915b849-645e-4e8f-8348-225559f78375?action=share&source=collection_link&creator=41268766"
+	},
+	"item": [
+		{
+			"name": "Позитивные проверки",
+			"item": [
+				{
+					"name": "1. Добавление блюда в корзину",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"id_cart\"\r",
+									"var value = pm.response.json().id\r",
+									"pm.collectionVariables.set(key, value)\r",
+									"\r",
+									"pm.test(\"Запрос успешно отработал\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{Cookie}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"item_id\": {{item_id}},\r\n    \"quantity\": 1,\r\n    \"place_slug\": \"{{place}}\",\r\n    \"place_business\": \"restaurant\",\r\n    \"item_options\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://eda.yandex.ru/api/v1/cart?longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false",
+							"protocol": "https",
+							"host": [
+								"eda",
+								"yandex",
+								"ru"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							],
+							"query": [
+								{
+									"key": "soft_multi",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "longitude",
+									"value": "50.28608"
+								},
+								{
+									"key": "latitude",
+									"value": "53.30559"
+								},
+								{
+									"key": "screen",
+									"value": "menu"
+								},
+								{
+									"key": "shippingType",
+									"value": "delivery"
+								},
+								{
+									"key": "autoTranslate",
+									"value": "false"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl 'https://eda.yandex.ru/api/v1/cart?soft_multi=true&longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false' \\\r\n  -H 'accept: application/json, text/plain, */*' \\\r\n  -H 'accept-language: ru' \\\r\n  -H 'content-type: application/json;charset=UTF-8' \\\r\n  -b 'receive-cookie-deprecation=1; yashr=5944506941733158931; is_gdpr=0; is_gdpr_b=CNGecBDsoQI=; _ym_uid=1733159247567243224; _ym_d=1733159252; gdpr=0; font_loaded=YSv1; KIykI=1; coockoos=1; PHPSESSID=195c7b14a70346338ce74734c2297fe0; yandexuid=8989730581727528352; yuidss=8989730581727528352; ymex=1748344597.oyu.144279331733158931#2060864038.yrts.1745504038; i=PHbcd07kPWCWjTfu1c4ehQzr/Mjfg1v1a25KA4z6jjz0b6WC6V+3wt0TrCmPNWcC35CTTX59p+LqKEfmDDyXCEhYZak=; skid=3718229461745921031; Session_id=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.OTMDqGQOJtsn--zjvDgaHp8gExA; sessar=1.1201.CiAUuFCFGkgeRhxJfgmMEUYjIiyu02CnDFpXqCCFRFtfYw.afQmgQZqONMtNMc2jeHqiKCM-yvUorBVJ4xyafOYzOA; sessionid2=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.fakesign0000000000000000000; yp=2061466552.multib.1#1746714043.szm.1_25:1536x864:1536x714#2061469323.udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D; L=R34CBVNRQllGBk8LekcNc04BbFtdQQoNThAaBlcxJCICFX96AXw=.1746109323.16136.310605.63d028696131e16780555431ceb8ba05; yandex_login=yukafamily2604; ys=udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D#c_chck.2919385458; _ym_isad=1; _yasc=yHXsVTajUAk4y5CRBJLOMwnne0XBKUypp2lNK9kBN2BDUWTMB6/pHU8ZEV3po6LawcsbH+XTEzSpx2s=; bh=EkAiR29vZ2xlIENocm9tZSI7dj0iMTM1IiwgIk5vdC1BLkJyYW5kIjt2PSI4IiwgIkNocm9taXVtIjt2PSIxMzUiGgN4ODYiDjEzNS4wLjcwNDkuMTE2KgI/MDoJIldpbmRvd3MiQgYxMC4wLjBKAjY0UloiR29vZ2xlIENocm9tZSI7dj0iMTM1LjAuNzA0OS4xMTYiLCJOb3QtQS5CcmFuZCI7dj0iOC4wLjAuMCIsIkNocm9taXVtIjt2PSIxMzUuMC43MDQ5LjExNiJgw9HYwAZqHtzK4f8IktihsQOfz+HqA/v68OcN6//99g/E08+HCA==; eda_web={%22app%22:{%22analyticsSession%22:{%22id%22:%22ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a%22%2C%22start%22:1746282690%2C%22update%22:1746282696}%2C%22deliveryTime%22:null%2C%22themeVariantKey%22:%22light%22%2C%22xDeviceId%22:%22m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4%22%2C%22lat%22:53.30559%2C%22lon%22:50.28608%2C%22lang%22:null}}' \\\r\n  -H 'origin: https://eda.yandex.ru' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://eda.yandex.ru/r/patari?placeSlug=patari_c5krg' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \\\r\n  -H 'x-app-version: 17.38.2' \\\r\n  -H 'x-client-session: ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a' \\\r\n  -H 'x-device-id: m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4' \\\r\n  -H 'x-platform: desktop_web' \\\r\n  -H 'x-taxi: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 platform=eats_desktop_web' \\\r\n  -H 'x-ya-coordinates: latitude=53.30559,longitude=50.28608' \\\r\n  --data-raw '{\"item_id\":3016841200,\"quantity\":1,\"place_slug\":\"patari_c5krg\",\"place_business\":\"restaurant\",\"item_options\":[]}'"
+					},
+					"response": []
+				},
+				{
+					"name": "2. Изменение количества блюда",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Запрос успешно отработал\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{Cookie}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\": 3,\r\n    \"item_options\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://eda.yandex.ru/api/v1/cart/{{id_cart}}?longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false&placeSlug={{place}}",
+							"protocol": "https",
+							"host": [
+								"eda",
+								"yandex",
+								"ru"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"{{id_cart}}"
+							],
+							"query": [
+								{
+									"key": "soft_multi",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "longitude",
+									"value": "50.28608"
+								},
+								{
+									"key": "latitude",
+									"value": "53.30559"
+								},
+								{
+									"key": "screen",
+									"value": "menu"
+								},
+								{
+									"key": "shippingType",
+									"value": "delivery"
+								},
+								{
+									"key": "autoTranslate",
+									"value": "false"
+								},
+								{
+									"key": "placeSlug",
+									"value": "{{place}}"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl 'https://eda.yandex.ru/api/v1/cart/5185329922?soft_multi=true&longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false&placeSlug=patari_c5krg' \\\r\n  -X 'PUT' \\\r\n  -H 'accept: application/json, text/plain, */*' \\\r\n  -H 'accept-language: ru' \\\r\n  -H 'content-type: application/json;charset=UTF-8' \\\r\n  -b 'receive-cookie-deprecation=1; yashr=5944506941733158931; is_gdpr=0; is_gdpr_b=CNGecBDsoQI=; _ym_uid=1733159247567243224; _ym_d=1733159252; gdpr=0; font_loaded=YSv1; KIykI=1; coockoos=1; PHPSESSID=195c7b14a70346338ce74734c2297fe0; yandexuid=8989730581727528352; yuidss=8989730581727528352; ymex=1748344597.oyu.144279331733158931#2060864038.yrts.1745504038; i=PHbcd07kPWCWjTfu1c4ehQzr/Mjfg1v1a25KA4z6jjz0b6WC6V+3wt0TrCmPNWcC35CTTX59p+LqKEfmDDyXCEhYZak=; skid=3718229461745921031; Session_id=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.OTMDqGQOJtsn--zjvDgaHp8gExA; sessar=1.1201.CiAUuFCFGkgeRhxJfgmMEUYjIiyu02CnDFpXqCCFRFtfYw.afQmgQZqONMtNMc2jeHqiKCM-yvUorBVJ4xyafOYzOA; sessionid2=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.fakesign0000000000000000000; yp=2061466552.multib.1#1746714043.szm.1_25:1536x864:1536x714#2061469323.udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D; L=R34CBVNRQllGBk8LekcNc04BbFtdQQoNThAaBlcxJCICFX96AXw=.1746109323.16136.310605.63d028696131e16780555431ceb8ba05; yandex_login=yukafamily2604; ys=udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D#c_chck.2919385458; _ym_isad=1; _yasc=yHXsVTajUAk4y5CRBJLOMwnne0XBKUypp2lNK9kBN2BDUWTMB6/pHU8ZEV3po6LawcsbH+XTEzSpx2s=; bh=EkAiR29vZ2xlIENocm9tZSI7dj0iMTM1IiwgIk5vdC1BLkJyYW5kIjt2PSI4IiwgIkNocm9taXVtIjt2PSIxMzUiGgN4ODYiDjEzNS4wLjcwNDkuMTE2KgI/MDoJIldpbmRvd3MiQgYxMC4wLjBKAjY0UloiR29vZ2xlIENocm9tZSI7dj0iMTM1LjAuNzA0OS4xMTYiLCJOb3QtQS5CcmFuZCI7dj0iOC4wLjAuMCIsIkNocm9taXVtIjt2PSIxMzUuMC43MDQ5LjExNiJgyNjYwAZqHtzK4f8IktihsQOfz+HqA/v68OcN6//99g/E08+HCA==; eda_web={%22app%22:{%22analyticsSession%22:{%22id%22:%22ma8c5uek-xlstrxfmwx-psmrxqril6-xjirm04jq8c%22%2C%22start%22:1746283592%2C%22update%22:1746283638}%2C%22deliveryTime%22:null%2C%22themeVariantKey%22:%22light%22%2C%22xDeviceId%22:%22m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4%22%2C%22lat%22:53.30559%2C%22lon%22:50.28608%2C%22lang%22:null}}' \\\r\n  -H 'origin: https://eda.yandex.ru' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://eda.yandex.ru/r/patari?placeSlug=patari_c5krg' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \\\r\n  -H 'x-app-version: 17.38.2' \\\r\n  -H 'x-client-session: ma8c5uek-xlstrxfmwx-psmrxqril6-xjirm04jq8c' \\\r\n  -H 'x-device-id: m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4' \\\r\n  -H 'x-platform: desktop_web' \\\r\n  -H 'x-taxi: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 platform=eats_desktop_web' \\\r\n  -H 'x-ya-coordinates: latitude=53.30559,longitude=50.28608' \\\r\n  --data-raw '{\"quantity\":3,\"item_options\":[]}'"
+					},
+					"response": []
+				},
+				{
+					"name": "3. Удалению блюда из корзины",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Запрос успешно отработал\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{Cookie}}"
+							}
+						],
+						"url": {
+							"raw": "https://eda.yandex.ru/api/v2/cart?longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false&placeSlug={{place}}",
+							"protocol": "https",
+							"host": [
+								"eda",
+								"yandex",
+								"ru"
+							],
+							"path": [
+								"api",
+								"v2",
+								"cart"
+							],
+							"query": [
+								{
+									"key": "soft_multi",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "longitude",
+									"value": "50.28608"
+								},
+								{
+									"key": "latitude",
+									"value": "53.30559"
+								},
+								{
+									"key": "screen",
+									"value": "menu"
+								},
+								{
+									"key": "shippingType",
+									"value": "delivery"
+								},
+								{
+									"key": "autoTranslate",
+									"value": "false"
+								},
+								{
+									"key": "placeSlug",
+									"value": "{{place}}"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl 'https://eda.yandex.ru/api/v2/cart?soft_multi=true&longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false&placeSlug=patari_c5krg' \\\r\n  -X 'DELETE' \\\r\n  -H 'accept: application/json, text/plain, */*' \\\r\n  -H 'accept-language: ru' \\\r\n  -b 'receive-cookie-deprecation=1; yashr=5944506941733158931; is_gdpr=0; is_gdpr_b=CNGecBDsoQI=; _ym_uid=1733159247567243224; _ym_d=1733159252; gdpr=0; font_loaded=YSv1; KIykI=1; coockoos=1; PHPSESSID=195c7b14a70346338ce74734c2297fe0; yandexuid=8989730581727528352; yuidss=8989730581727528352; ymex=1748344597.oyu.144279331733158931#2060864038.yrts.1745504038; i=PHbcd07kPWCWjTfu1c4ehQzr/Mjfg1v1a25KA4z6jjz0b6WC6V+3wt0TrCmPNWcC35CTTX59p+LqKEfmDDyXCEhYZak=; skid=3718229461745921031; Session_id=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.OTMDqGQOJtsn--zjvDgaHp8gExA; sessar=1.1201.CiAUuFCFGkgeRhxJfgmMEUYjIiyu02CnDFpXqCCFRFtfYw.afQmgQZqONMtNMc2jeHqiKCM-yvUorBVJ4xyafOYzOA; sessionid2=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.fakesign0000000000000000000; yp=2061466552.multib.1#1746714043.szm.1_25:1536x864:1536x714#2061469323.udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D; L=R34CBVNRQllGBk8LekcNc04BbFtdQQoNThAaBlcxJCICFX96AXw=.1746109323.16136.310605.63d028696131e16780555431ceb8ba05; yandex_login=yukafamily2604; ys=udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D#c_chck.2919385458; _ym_isad=1; _yasc=7oM4d8IXQYfUFUeOUm2pgnbS5svCE+TWtPeaFvpGXiSu4MeZ5QLcNRG+jP/afCUF+E76+8G+kU+HZw4=; bh=EkAiR29vZ2xlIENocm9tZSI7dj0iMTM1IiwgIk5vdC1BLkJyYW5kIjt2PSI4IiwgIkNocm9taXVtIjt2PSIxMzUiGgN4ODYiDjEzNS4wLjcwNDkuMTE2KgI/MDoJIldpbmRvd3MiQgYxMC4wLjBKAjY0UloiR29vZ2xlIENocm9tZSI7dj0iMTM1LjAuNzA0OS4xMTYiLCJOb3QtQS5CcmFuZCI7dj0iOC4wLjAuMCIsIkNocm9taXVtIjt2PSIxMzUuMC43MDQ5LjExNiJgheTYwAZqHtzK4f8IktihsQOfz+HqA/v68OcN6//99g/E08+HCA==; eda_web={%22app%22:{%22analyticsSession%22:{%22id%22:%22ma8d1b0u-v2xqyh6aki8-nfcolqx4t3n-p1kh7f8n18b%22%2C%22start%22:1746285059%2C%22update%22:1746285143}%2C%22deliveryTime%22:null%2C%22themeVariantKey%22:%22light%22%2C%22xDeviceId%22:%22m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4%22%2C%22lat%22:53.30559%2C%22lon%22:50.28608%2C%22lang%22:null}}' \\\r\n  -H 'origin: https://eda.yandex.ru' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://eda.yandex.ru/r/patari?placeSlug=patari_c5krg' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \\\r\n  -H 'x-app-version: 17.38.2' \\\r\n  -H 'x-client-session: ma8d1b0u-v2xqyh6aki8-nfcolqx4t3n-p1kh7f8n18b' \\\r\n  -H 'x-device-id: m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4' \\\r\n  -H 'x-platform: desktop_web' \\\r\n  -H 'x-taxi: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 platform=eats_desktop_web' \\\r\n  -H 'x-ya-coordinates: latitude=53.30559,longitude=50.28608'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Негативные проверки",
+			"item": [
+				{
+					"name": "4. Добавление 1000 единиц блюда в корзину",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"id_cart\"\r",
+									"var value = pm.response.json().id\r",
+									"pm.collectionVariables.set(key, value)\r",
+									"\r",
+									"pm.test(\"Запрос успешно отработал\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{Cookie}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"item_id\": {{item_id}},\r\n    \"quantity\": 1000,\r\n    \"place_slug\": \"{{place}}\",\r\n    \"place_business\": \"restaurant\",\r\n    \"item_options\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://eda.yandex.ru/api/v1/cart?longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false",
+							"protocol": "https",
+							"host": [
+								"eda",
+								"yandex",
+								"ru"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							],
+							"query": [
+								{
+									"key": "soft_multi",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "longitude",
+									"value": "50.28608"
+								},
+								{
+									"key": "latitude",
+									"value": "53.30559"
+								},
+								{
+									"key": "screen",
+									"value": "menu"
+								},
+								{
+									"key": "shippingType",
+									"value": "delivery"
+								},
+								{
+									"key": "autoTranslate",
+									"value": "false"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl 'https://eda.yandex.ru/api/v1/cart?soft_multi=true&longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false' \\\r\n  -H 'accept: application/json, text/plain, */*' \\\r\n  -H 'accept-language: ru' \\\r\n  -H 'content-type: application/json;charset=UTF-8' \\\r\n  -b 'receive-cookie-deprecation=1; yashr=5944506941733158931; is_gdpr=0; is_gdpr_b=CNGecBDsoQI=; _ym_uid=1733159247567243224; _ym_d=1733159252; gdpr=0; font_loaded=YSv1; KIykI=1; coockoos=1; PHPSESSID=195c7b14a70346338ce74734c2297fe0; yandexuid=8989730581727528352; yuidss=8989730581727528352; ymex=1748344597.oyu.144279331733158931#2060864038.yrts.1745504038; i=PHbcd07kPWCWjTfu1c4ehQzr/Mjfg1v1a25KA4z6jjz0b6WC6V+3wt0TrCmPNWcC35CTTX59p+LqKEfmDDyXCEhYZak=; skid=3718229461745921031; Session_id=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.OTMDqGQOJtsn--zjvDgaHp8gExA; sessar=1.1201.CiAUuFCFGkgeRhxJfgmMEUYjIiyu02CnDFpXqCCFRFtfYw.afQmgQZqONMtNMc2jeHqiKCM-yvUorBVJ4xyafOYzOA; sessionid2=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.fakesign0000000000000000000; yp=2061466552.multib.1#1746714043.szm.1_25:1536x864:1536x714#2061469323.udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D; L=R34CBVNRQllGBk8LekcNc04BbFtdQQoNThAaBlcxJCICFX96AXw=.1746109323.16136.310605.63d028696131e16780555431ceb8ba05; yandex_login=yukafamily2604; ys=udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D#c_chck.2919385458; _ym_isad=1; _yasc=yHXsVTajUAk4y5CRBJLOMwnne0XBKUypp2lNK9kBN2BDUWTMB6/pHU8ZEV3po6LawcsbH+XTEzSpx2s=; bh=EkAiR29vZ2xlIENocm9tZSI7dj0iMTM1IiwgIk5vdC1BLkJyYW5kIjt2PSI4IiwgIkNocm9taXVtIjt2PSIxMzUiGgN4ODYiDjEzNS4wLjcwNDkuMTE2KgI/MDoJIldpbmRvd3MiQgYxMC4wLjBKAjY0UloiR29vZ2xlIENocm9tZSI7dj0iMTM1LjAuNzA0OS4xMTYiLCJOb3QtQS5CcmFuZCI7dj0iOC4wLjAuMCIsIkNocm9taXVtIjt2PSIxMzUuMC43MDQ5LjExNiJgw9HYwAZqHtzK4f8IktihsQOfz+HqA/v68OcN6//99g/E08+HCA==; eda_web={%22app%22:{%22analyticsSession%22:{%22id%22:%22ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a%22%2C%22start%22:1746282690%2C%22update%22:1746282696}%2C%22deliveryTime%22:null%2C%22themeVariantKey%22:%22light%22%2C%22xDeviceId%22:%22m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4%22%2C%22lat%22:53.30559%2C%22lon%22:50.28608%2C%22lang%22:null}}' \\\r\n  -H 'origin: https://eda.yandex.ru' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://eda.yandex.ru/r/patari?placeSlug=patari_c5krg' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \\\r\n  -H 'x-app-version: 17.38.2' \\\r\n  -H 'x-client-session: ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a' \\\r\n  -H 'x-device-id: m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4' \\\r\n  -H 'x-platform: desktop_web' \\\r\n  -H 'x-taxi: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 platform=eats_desktop_web' \\\r\n  -H 'x-ya-coordinates: latitude=53.30559,longitude=50.28608' \\\r\n  --data-raw '{\"item_id\":3016841200,\"quantity\":1,\"place_slug\":\"patari_c5krg\",\"place_business\":\"restaurant\",\"item_options\":[]}'"
+					},
+					"response": []
+				},
+				{
+					"name": "5. Добавление отрицательного количества блюда в корзину",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"id_cart\"\r",
+									"var value = pm.response.json().id\r",
+									"pm.collectionVariables.set(key, value)\r",
+									"\r",
+									"pm.test(\"Запрос успешно отработал\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{Cookie}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"item_id\": {{item_id}},\r\n    \"quantity\": -10,\r\n    \"place_slug\": \"{{place}}\",\r\n    \"place_business\": \"restaurant\",\r\n    \"item_options\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://eda.yandex.ru/api/v1/cart?longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false",
+							"protocol": "https",
+							"host": [
+								"eda",
+								"yandex",
+								"ru"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							],
+							"query": [
+								{
+									"key": "soft_multi",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "longitude",
+									"value": "50.28608"
+								},
+								{
+									"key": "latitude",
+									"value": "53.30559"
+								},
+								{
+									"key": "screen",
+									"value": "menu"
+								},
+								{
+									"key": "shippingType",
+									"value": "delivery"
+								},
+								{
+									"key": "autoTranslate",
+									"value": "false"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl 'https://eda.yandex.ru/api/v1/cart?soft_multi=true&longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false' \\\r\n  -H 'accept: application/json, text/plain, */*' \\\r\n  -H 'accept-language: ru' \\\r\n  -H 'content-type: application/json;charset=UTF-8' \\\r\n  -b 'receive-cookie-deprecation=1; yashr=5944506941733158931; is_gdpr=0; is_gdpr_b=CNGecBDsoQI=; _ym_uid=1733159247567243224; _ym_d=1733159252; gdpr=0; font_loaded=YSv1; KIykI=1; coockoos=1; PHPSESSID=195c7b14a70346338ce74734c2297fe0; yandexuid=8989730581727528352; yuidss=8989730581727528352; ymex=1748344597.oyu.144279331733158931#2060864038.yrts.1745504038; i=PHbcd07kPWCWjTfu1c4ehQzr/Mjfg1v1a25KA4z6jjz0b6WC6V+3wt0TrCmPNWcC35CTTX59p+LqKEfmDDyXCEhYZak=; skid=3718229461745921031; Session_id=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.OTMDqGQOJtsn--zjvDgaHp8gExA; sessar=1.1201.CiAUuFCFGkgeRhxJfgmMEUYjIiyu02CnDFpXqCCFRFtfYw.afQmgQZqONMtNMc2jeHqiKCM-yvUorBVJ4xyafOYzOA; sessionid2=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.fakesign0000000000000000000; yp=2061466552.multib.1#1746714043.szm.1_25:1536x864:1536x714#2061469323.udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D; L=R34CBVNRQllGBk8LekcNc04BbFtdQQoNThAaBlcxJCICFX96AXw=.1746109323.16136.310605.63d028696131e16780555431ceb8ba05; yandex_login=yukafamily2604; ys=udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D#c_chck.2919385458; _ym_isad=1; _yasc=yHXsVTajUAk4y5CRBJLOMwnne0XBKUypp2lNK9kBN2BDUWTMB6/pHU8ZEV3po6LawcsbH+XTEzSpx2s=; bh=EkAiR29vZ2xlIENocm9tZSI7dj0iMTM1IiwgIk5vdC1BLkJyYW5kIjt2PSI4IiwgIkNocm9taXVtIjt2PSIxMzUiGgN4ODYiDjEzNS4wLjcwNDkuMTE2KgI/MDoJIldpbmRvd3MiQgYxMC4wLjBKAjY0UloiR29vZ2xlIENocm9tZSI7dj0iMTM1LjAuNzA0OS4xMTYiLCJOb3QtQS5CcmFuZCI7dj0iOC4wLjAuMCIsIkNocm9taXVtIjt2PSIxMzUuMC43MDQ5LjExNiJgw9HYwAZqHtzK4f8IktihsQOfz+HqA/v68OcN6//99g/E08+HCA==; eda_web={%22app%22:{%22analyticsSession%22:{%22id%22:%22ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a%22%2C%22start%22:1746282690%2C%22update%22:1746282696}%2C%22deliveryTime%22:null%2C%22themeVariantKey%22:%22light%22%2C%22xDeviceId%22:%22m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4%22%2C%22lat%22:53.30559%2C%22lon%22:50.28608%2C%22lang%22:null}}' \\\r\n  -H 'origin: https://eda.yandex.ru' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://eda.yandex.ru/r/patari?placeSlug=patari_c5krg' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \\\r\n  -H 'x-app-version: 17.38.2' \\\r\n  -H 'x-client-session: ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a' \\\r\n  -H 'x-device-id: m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4' \\\r\n  -H 'x-platform: desktop_web' \\\r\n  -H 'x-taxi: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 platform=eats_desktop_web' \\\r\n  -H 'x-ya-coordinates: latitude=53.30559,longitude=50.28608' \\\r\n  --data-raw '{\"item_id\":3016841200,\"quantity\":1,\"place_slug\":\"patari_c5krg\",\"place_business\":\"restaurant\",\"item_options\":[]}'"
+					},
+					"response": []
+				},
+				{
+					"name": "6. Добавление блюда с item_id из 9 цифр",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Запрос успешно отработал\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{Cookie}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"item_id\": 301684120,\r\n    \"quantity\": 3,\r\n    \"place_slug\": \"{{place}}\",\r\n    \"place_business\": \"restaurant\",\r\n    \"item_options\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://eda.yandex.ru/api/v1/cart?longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false",
+							"protocol": "https",
+							"host": [
+								"eda",
+								"yandex",
+								"ru"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							],
+							"query": [
+								{
+									"key": "soft_multi",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "longitude",
+									"value": "50.28608"
+								},
+								{
+									"key": "latitude",
+									"value": "53.30559"
+								},
+								{
+									"key": "screen",
+									"value": "menu"
+								},
+								{
+									"key": "shippingType",
+									"value": "delivery"
+								},
+								{
+									"key": "autoTranslate",
+									"value": "false"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl 'https://eda.yandex.ru/api/v1/cart?soft_multi=true&longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false' \\\r\n  -H 'accept: application/json, text/plain, */*' \\\r\n  -H 'accept-language: ru' \\\r\n  -H 'content-type: application/json;charset=UTF-8' \\\r\n  -b 'receive-cookie-deprecation=1; yashr=5944506941733158931; is_gdpr=0; is_gdpr_b=CNGecBDsoQI=; _ym_uid=1733159247567243224; _ym_d=1733159252; gdpr=0; font_loaded=YSv1; KIykI=1; coockoos=1; PHPSESSID=195c7b14a70346338ce74734c2297fe0; yandexuid=8989730581727528352; yuidss=8989730581727528352; ymex=1748344597.oyu.144279331733158931#2060864038.yrts.1745504038; i=PHbcd07kPWCWjTfu1c4ehQzr/Mjfg1v1a25KA4z6jjz0b6WC6V+3wt0TrCmPNWcC35CTTX59p+LqKEfmDDyXCEhYZak=; skid=3718229461745921031; Session_id=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.OTMDqGQOJtsn--zjvDgaHp8gExA; sessar=1.1201.CiAUuFCFGkgeRhxJfgmMEUYjIiyu02CnDFpXqCCFRFtfYw.afQmgQZqONMtNMc2jeHqiKCM-yvUorBVJ4xyafOYzOA; sessionid2=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.fakesign0000000000000000000; yp=2061466552.multib.1#1746714043.szm.1_25:1536x864:1536x714#2061469323.udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D; L=R34CBVNRQllGBk8LekcNc04BbFtdQQoNThAaBlcxJCICFX96AXw=.1746109323.16136.310605.63d028696131e16780555431ceb8ba05; yandex_login=yukafamily2604; ys=udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D#c_chck.2919385458; _ym_isad=1; _yasc=yHXsVTajUAk4y5CRBJLOMwnne0XBKUypp2lNK9kBN2BDUWTMB6/pHU8ZEV3po6LawcsbH+XTEzSpx2s=; bh=EkAiR29vZ2xlIENocm9tZSI7dj0iMTM1IiwgIk5vdC1BLkJyYW5kIjt2PSI4IiwgIkNocm9taXVtIjt2PSIxMzUiGgN4ODYiDjEzNS4wLjcwNDkuMTE2KgI/MDoJIldpbmRvd3MiQgYxMC4wLjBKAjY0UloiR29vZ2xlIENocm9tZSI7dj0iMTM1LjAuNzA0OS4xMTYiLCJOb3QtQS5CcmFuZCI7dj0iOC4wLjAuMCIsIkNocm9taXVtIjt2PSIxMzUuMC43MDQ5LjExNiJgw9HYwAZqHtzK4f8IktihsQOfz+HqA/v68OcN6//99g/E08+HCA==; eda_web={%22app%22:{%22analyticsSession%22:{%22id%22:%22ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a%22%2C%22start%22:1746282690%2C%22update%22:1746282696}%2C%22deliveryTime%22:null%2C%22themeVariantKey%22:%22light%22%2C%22xDeviceId%22:%22m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4%22%2C%22lat%22:53.30559%2C%22lon%22:50.28608%2C%22lang%22:null}}' \\\r\n  -H 'origin: https://eda.yandex.ru' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://eda.yandex.ru/r/patari?placeSlug=patari_c5krg' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \\\r\n  -H 'x-app-version: 17.38.2' \\\r\n  -H 'x-client-session: ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a' \\\r\n  -H 'x-device-id: m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4' \\\r\n  -H 'x-platform: desktop_web' \\\r\n  -H 'x-taxi: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 platform=eats_desktop_web' \\\r\n  -H 'x-ya-coordinates: latitude=53.30559,longitude=50.28608' \\\r\n  --data-raw '{\"item_id\":3016841200,\"quantity\":1,\"place_slug\":\"patari_c5krg\",\"place_business\":\"restaurant\",\"item_options\":[]}'"
+					},
+					"response": []
+				},
+				{
+					"name": "7. Добавление блюда с item_id из 11 цифр",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Запрос успешно отработал\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{Cookie}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"item_id\": 30168412000,\r\n    \"quantity\": 3,\r\n    \"place_slug\": \"{{place}}\",\r\n    \"place_business\": \"restaurant\",\r\n    \"item_options\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://eda.yandex.ru/api/v1/cart?longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false",
+							"protocol": "https",
+							"host": [
+								"eda",
+								"yandex",
+								"ru"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							],
+							"query": [
+								{
+									"key": "soft_multi",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "longitude",
+									"value": "50.28608"
+								},
+								{
+									"key": "latitude",
+									"value": "53.30559"
+								},
+								{
+									"key": "screen",
+									"value": "menu"
+								},
+								{
+									"key": "shippingType",
+									"value": "delivery"
+								},
+								{
+									"key": "autoTranslate",
+									"value": "false"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl 'https://eda.yandex.ru/api/v1/cart?soft_multi=true&longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false' \\\r\n  -H 'accept: application/json, text/plain, */*' \\\r\n  -H 'accept-language: ru' \\\r\n  -H 'content-type: application/json;charset=UTF-8' \\\r\n  -b 'receive-cookie-deprecation=1; yashr=5944506941733158931; is_gdpr=0; is_gdpr_b=CNGecBDsoQI=; _ym_uid=1733159247567243224; _ym_d=1733159252; gdpr=0; font_loaded=YSv1; KIykI=1; coockoos=1; PHPSESSID=195c7b14a70346338ce74734c2297fe0; yandexuid=8989730581727528352; yuidss=8989730581727528352; ymex=1748344597.oyu.144279331733158931#2060864038.yrts.1745504038; i=PHbcd07kPWCWjTfu1c4ehQzr/Mjfg1v1a25KA4z6jjz0b6WC6V+3wt0TrCmPNWcC35CTTX59p+LqKEfmDDyXCEhYZak=; skid=3718229461745921031; Session_id=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.OTMDqGQOJtsn--zjvDgaHp8gExA; sessar=1.1201.CiAUuFCFGkgeRhxJfgmMEUYjIiyu02CnDFpXqCCFRFtfYw.afQmgQZqONMtNMc2jeHqiKCM-yvUorBVJ4xyafOYzOA; sessionid2=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.fakesign0000000000000000000; yp=2061466552.multib.1#1746714043.szm.1_25:1536x864:1536x714#2061469323.udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D; L=R34CBVNRQllGBk8LekcNc04BbFtdQQoNThAaBlcxJCICFX96AXw=.1746109323.16136.310605.63d028696131e16780555431ceb8ba05; yandex_login=yukafamily2604; ys=udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D#c_chck.2919385458; _ym_isad=1; _yasc=yHXsVTajUAk4y5CRBJLOMwnne0XBKUypp2lNK9kBN2BDUWTMB6/pHU8ZEV3po6LawcsbH+XTEzSpx2s=; bh=EkAiR29vZ2xlIENocm9tZSI7dj0iMTM1IiwgIk5vdC1BLkJyYW5kIjt2PSI4IiwgIkNocm9taXVtIjt2PSIxMzUiGgN4ODYiDjEzNS4wLjcwNDkuMTE2KgI/MDoJIldpbmRvd3MiQgYxMC4wLjBKAjY0UloiR29vZ2xlIENocm9tZSI7dj0iMTM1LjAuNzA0OS4xMTYiLCJOb3QtQS5CcmFuZCI7dj0iOC4wLjAuMCIsIkNocm9taXVtIjt2PSIxMzUuMC43MDQ5LjExNiJgw9HYwAZqHtzK4f8IktihsQOfz+HqA/v68OcN6//99g/E08+HCA==; eda_web={%22app%22:{%22analyticsSession%22:{%22id%22:%22ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a%22%2C%22start%22:1746282690%2C%22update%22:1746282696}%2C%22deliveryTime%22:null%2C%22themeVariantKey%22:%22light%22%2C%22xDeviceId%22:%22m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4%22%2C%22lat%22:53.30559%2C%22lon%22:50.28608%2C%22lang%22:null}}' \\\r\n  -H 'origin: https://eda.yandex.ru' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://eda.yandex.ru/r/patari?placeSlug=patari_c5krg' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \\\r\n  -H 'x-app-version: 17.38.2' \\\r\n  -H 'x-client-session: ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a' \\\r\n  -H 'x-device-id: m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4' \\\r\n  -H 'x-platform: desktop_web' \\\r\n  -H 'x-taxi: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 platform=eats_desktop_web' \\\r\n  -H 'x-ya-coordinates: latitude=53.30559,longitude=50.28608' \\\r\n  --data-raw '{\"item_id\":3016841200,\"quantity\":1,\"place_slug\":\"patari_c5krg\",\"place_business\":\"restaurant\",\"item_options\":[]}'"
+					},
+					"response": []
+				},
+				{
+					"name": "8. Добавление блюда без item_id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Запрос успешно отработал\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{Cookie}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"item_id\":,\r\n    \"quantity\": 3,\r\n    \"place_slug\": \"{{place}}\",\r\n    \"place_business\": \"restaurant\",\r\n    \"item_options\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://eda.yandex.ru/api/v1/cart?longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false",
+							"protocol": "https",
+							"host": [
+								"eda",
+								"yandex",
+								"ru"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							],
+							"query": [
+								{
+									"key": "soft_multi",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "longitude",
+									"value": "50.28608"
+								},
+								{
+									"key": "latitude",
+									"value": "53.30559"
+								},
+								{
+									"key": "screen",
+									"value": "menu"
+								},
+								{
+									"key": "shippingType",
+									"value": "delivery"
+								},
+								{
+									"key": "autoTranslate",
+									"value": "false"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl 'https://eda.yandex.ru/api/v1/cart?soft_multi=true&longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false' \\\r\n  -H 'accept: application/json, text/plain, */*' \\\r\n  -H 'accept-language: ru' \\\r\n  -H 'content-type: application/json;charset=UTF-8' \\\r\n  -b 'receive-cookie-deprecation=1; yashr=5944506941733158931; is_gdpr=0; is_gdpr_b=CNGecBDsoQI=; _ym_uid=1733159247567243224; _ym_d=1733159252; gdpr=0; font_loaded=YSv1; KIykI=1; coockoos=1; PHPSESSID=195c7b14a70346338ce74734c2297fe0; yandexuid=8989730581727528352; yuidss=8989730581727528352; ymex=1748344597.oyu.144279331733158931#2060864038.yrts.1745504038; i=PHbcd07kPWCWjTfu1c4ehQzr/Mjfg1v1a25KA4z6jjz0b6WC6V+3wt0TrCmPNWcC35CTTX59p+LqKEfmDDyXCEhYZak=; skid=3718229461745921031; Session_id=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.OTMDqGQOJtsn--zjvDgaHp8gExA; sessar=1.1201.CiAUuFCFGkgeRhxJfgmMEUYjIiyu02CnDFpXqCCFRFtfYw.afQmgQZqONMtNMc2jeHqiKCM-yvUorBVJ4xyafOYzOA; sessionid2=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.fakesign0000000000000000000; yp=2061466552.multib.1#1746714043.szm.1_25:1536x864:1536x714#2061469323.udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D; L=R34CBVNRQllGBk8LekcNc04BbFtdQQoNThAaBlcxJCICFX96AXw=.1746109323.16136.310605.63d028696131e16780555431ceb8ba05; yandex_login=yukafamily2604; ys=udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D#c_chck.2919385458; _ym_isad=1; _yasc=yHXsVTajUAk4y5CRBJLOMwnne0XBKUypp2lNK9kBN2BDUWTMB6/pHU8ZEV3po6LawcsbH+XTEzSpx2s=; bh=EkAiR29vZ2xlIENocm9tZSI7dj0iMTM1IiwgIk5vdC1BLkJyYW5kIjt2PSI4IiwgIkNocm9taXVtIjt2PSIxMzUiGgN4ODYiDjEzNS4wLjcwNDkuMTE2KgI/MDoJIldpbmRvd3MiQgYxMC4wLjBKAjY0UloiR29vZ2xlIENocm9tZSI7dj0iMTM1LjAuNzA0OS4xMTYiLCJOb3QtQS5CcmFuZCI7dj0iOC4wLjAuMCIsIkNocm9taXVtIjt2PSIxMzUuMC43MDQ5LjExNiJgw9HYwAZqHtzK4f8IktihsQOfz+HqA/v68OcN6//99g/E08+HCA==; eda_web={%22app%22:{%22analyticsSession%22:{%22id%22:%22ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a%22%2C%22start%22:1746282690%2C%22update%22:1746282696}%2C%22deliveryTime%22:null%2C%22themeVariantKey%22:%22light%22%2C%22xDeviceId%22:%22m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4%22%2C%22lat%22:53.30559%2C%22lon%22:50.28608%2C%22lang%22:null}}' \\\r\n  -H 'origin: https://eda.yandex.ru' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://eda.yandex.ru/r/patari?placeSlug=patari_c5krg' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \\\r\n  -H 'x-app-version: 17.38.2' \\\r\n  -H 'x-client-session: ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a' \\\r\n  -H 'x-device-id: m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4' \\\r\n  -H 'x-platform: desktop_web' \\\r\n  -H 'x-taxi: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 platform=eats_desktop_web' \\\r\n  -H 'x-ya-coordinates: latitude=53.30559,longitude=50.28608' \\\r\n  --data-raw '{\"item_id\":3016841200,\"quantity\":1,\"place_slug\":\"patari_c5krg\",\"place_business\":\"restaurant\",\"item_options\":[]}'"
+					},
+					"response": []
+				},
+				{
+					"name": "9. Добавление блюда с нулевым количеством",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Запрос успешно отработал\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{Cookie}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"item_id\": {{item_id}},\r\n    \"quantity\": 0,\r\n    \"place_slug\": \"{{place}}\",\r\n    \"place_business\": \"restaurant\",\r\n    \"item_options\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://eda.yandex.ru/api/v1/cart?longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false",
+							"protocol": "https",
+							"host": [
+								"eda",
+								"yandex",
+								"ru"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							],
+							"query": [
+								{
+									"key": "soft_multi",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "longitude",
+									"value": "50.28608"
+								},
+								{
+									"key": "latitude",
+									"value": "53.30559"
+								},
+								{
+									"key": "screen",
+									"value": "menu"
+								},
+								{
+									"key": "shippingType",
+									"value": "delivery"
+								},
+								{
+									"key": "autoTranslate",
+									"value": "false"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl 'https://eda.yandex.ru/api/v1/cart?soft_multi=true&longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false' \\\r\n  -H 'accept: application/json, text/plain, */*' \\\r\n  -H 'accept-language: ru' \\\r\n  -H 'content-type: application/json;charset=UTF-8' \\\r\n  -b 'receive-cookie-deprecation=1; yashr=5944506941733158931; is_gdpr=0; is_gdpr_b=CNGecBDsoQI=; _ym_uid=1733159247567243224; _ym_d=1733159252; gdpr=0; font_loaded=YSv1; KIykI=1; coockoos=1; PHPSESSID=195c7b14a70346338ce74734c2297fe0; yandexuid=8989730581727528352; yuidss=8989730581727528352; ymex=1748344597.oyu.144279331733158931#2060864038.yrts.1745504038; i=PHbcd07kPWCWjTfu1c4ehQzr/Mjfg1v1a25KA4z6jjz0b6WC6V+3wt0TrCmPNWcC35CTTX59p+LqKEfmDDyXCEhYZak=; skid=3718229461745921031; Session_id=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.OTMDqGQOJtsn--zjvDgaHp8gExA; sessar=1.1201.CiAUuFCFGkgeRhxJfgmMEUYjIiyu02CnDFpXqCCFRFtfYw.afQmgQZqONMtNMc2jeHqiKCM-yvUorBVJ4xyafOYzOA; sessionid2=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.fakesign0000000000000000000; yp=2061466552.multib.1#1746714043.szm.1_25:1536x864:1536x714#2061469323.udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D; L=R34CBVNRQllGBk8LekcNc04BbFtdQQoNThAaBlcxJCICFX96AXw=.1746109323.16136.310605.63d028696131e16780555431ceb8ba05; yandex_login=yukafamily2604; ys=udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D#c_chck.2919385458; _ym_isad=1; _yasc=yHXsVTajUAk4y5CRBJLOMwnne0XBKUypp2lNK9kBN2BDUWTMB6/pHU8ZEV3po6LawcsbH+XTEzSpx2s=; bh=EkAiR29vZ2xlIENocm9tZSI7dj0iMTM1IiwgIk5vdC1BLkJyYW5kIjt2PSI4IiwgIkNocm9taXVtIjt2PSIxMzUiGgN4ODYiDjEzNS4wLjcwNDkuMTE2KgI/MDoJIldpbmRvd3MiQgYxMC4wLjBKAjY0UloiR29vZ2xlIENocm9tZSI7dj0iMTM1LjAuNzA0OS4xMTYiLCJOb3QtQS5CcmFuZCI7dj0iOC4wLjAuMCIsIkNocm9taXVtIjt2PSIxMzUuMC43MDQ5LjExNiJgw9HYwAZqHtzK4f8IktihsQOfz+HqA/v68OcN6//99g/E08+HCA==; eda_web={%22app%22:{%22analyticsSession%22:{%22id%22:%22ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a%22%2C%22start%22:1746282690%2C%22update%22:1746282696}%2C%22deliveryTime%22:null%2C%22themeVariantKey%22:%22light%22%2C%22xDeviceId%22:%22m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4%22%2C%22lat%22:53.30559%2C%22lon%22:50.28608%2C%22lang%22:null}}' \\\r\n  -H 'origin: https://eda.yandex.ru' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://eda.yandex.ru/r/patari?placeSlug=patari_c5krg' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \\\r\n  -H 'x-app-version: 17.38.2' \\\r\n  -H 'x-client-session: ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a' \\\r\n  -H 'x-device-id: m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4' \\\r\n  -H 'x-platform: desktop_web' \\\r\n  -H 'x-taxi: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 platform=eats_desktop_web' \\\r\n  -H 'x-ya-coordinates: latitude=53.30559,longitude=50.28608' \\\r\n  --data-raw '{\"item_id\":3016841200,\"quantity\":1,\"place_slug\":\"patari_c5krg\",\"place_business\":\"restaurant\",\"item_options\":[]}'"
+					},
+					"response": []
+				},
+				{
+					"name": "10.1. Добавление 10 единиц блюда в корзину",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"id_cart\"\r",
+									"var value = pm.response.json().id\r",
+									"pm.collectionVariables.set(key, value)\r",
+									"\r",
+									"pm.test(\"Запрос успешно отработал\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{Cookie}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"item_id\": {{item_id}},\r\n    \"quantity\": 10,\r\n    \"place_slug\": \"{{place}}\",\r\n    \"place_business\": \"restaurant\",\r\n    \"item_options\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://eda.yandex.ru/api/v1/cart?longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false",
+							"protocol": "https",
+							"host": [
+								"eda",
+								"yandex",
+								"ru"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							],
+							"query": [
+								{
+									"key": "soft_multi",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "longitude",
+									"value": "50.28608"
+								},
+								{
+									"key": "latitude",
+									"value": "53.30559"
+								},
+								{
+									"key": "screen",
+									"value": "menu"
+								},
+								{
+									"key": "shippingType",
+									"value": "delivery"
+								},
+								{
+									"key": "autoTranslate",
+									"value": "false"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl 'https://eda.yandex.ru/api/v1/cart?soft_multi=true&longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false' \\\r\n  -H 'accept: application/json, text/plain, */*' \\\r\n  -H 'accept-language: ru' \\\r\n  -H 'content-type: application/json;charset=UTF-8' \\\r\n  -b 'receive-cookie-deprecation=1; yashr=5944506941733158931; is_gdpr=0; is_gdpr_b=CNGecBDsoQI=; _ym_uid=1733159247567243224; _ym_d=1733159252; gdpr=0; font_loaded=YSv1; KIykI=1; coockoos=1; PHPSESSID=195c7b14a70346338ce74734c2297fe0; yandexuid=8989730581727528352; yuidss=8989730581727528352; ymex=1748344597.oyu.144279331733158931#2060864038.yrts.1745504038; i=PHbcd07kPWCWjTfu1c4ehQzr/Mjfg1v1a25KA4z6jjz0b6WC6V+3wt0TrCmPNWcC35CTTX59p+LqKEfmDDyXCEhYZak=; skid=3718229461745921031; Session_id=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.OTMDqGQOJtsn--zjvDgaHp8gExA; sessar=1.1201.CiAUuFCFGkgeRhxJfgmMEUYjIiyu02CnDFpXqCCFRFtfYw.afQmgQZqONMtNMc2jeHqiKCM-yvUorBVJ4xyafOYzOA; sessionid2=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.fakesign0000000000000000000; yp=2061466552.multib.1#1746714043.szm.1_25:1536x864:1536x714#2061469323.udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D; L=R34CBVNRQllGBk8LekcNc04BbFtdQQoNThAaBlcxJCICFX96AXw=.1746109323.16136.310605.63d028696131e16780555431ceb8ba05; yandex_login=yukafamily2604; ys=udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D#c_chck.2919385458; _ym_isad=1; _yasc=yHXsVTajUAk4y5CRBJLOMwnne0XBKUypp2lNK9kBN2BDUWTMB6/pHU8ZEV3po6LawcsbH+XTEzSpx2s=; bh=EkAiR29vZ2xlIENocm9tZSI7dj0iMTM1IiwgIk5vdC1BLkJyYW5kIjt2PSI4IiwgIkNocm9taXVtIjt2PSIxMzUiGgN4ODYiDjEzNS4wLjcwNDkuMTE2KgI/MDoJIldpbmRvd3MiQgYxMC4wLjBKAjY0UloiR29vZ2xlIENocm9tZSI7dj0iMTM1LjAuNzA0OS4xMTYiLCJOb3QtQS5CcmFuZCI7dj0iOC4wLjAuMCIsIkNocm9taXVtIjt2PSIxMzUuMC43MDQ5LjExNiJgw9HYwAZqHtzK4f8IktihsQOfz+HqA/v68OcN6//99g/E08+HCA==; eda_web={%22app%22:{%22analyticsSession%22:{%22id%22:%22ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a%22%2C%22start%22:1746282690%2C%22update%22:1746282696}%2C%22deliveryTime%22:null%2C%22themeVariantKey%22:%22light%22%2C%22xDeviceId%22:%22m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4%22%2C%22lat%22:53.30559%2C%22lon%22:50.28608%2C%22lang%22:null}}' \\\r\n  -H 'origin: https://eda.yandex.ru' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://eda.yandex.ru/r/patari?placeSlug=patari_c5krg' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \\\r\n  -H 'x-app-version: 17.38.2' \\\r\n  -H 'x-client-session: ma8bmizt-jxmclfum6t-lhpskp6x9q-fhxbtyhtc2a' \\\r\n  -H 'x-device-id: m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4' \\\r\n  -H 'x-platform: desktop_web' \\\r\n  -H 'x-taxi: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 platform=eats_desktop_web' \\\r\n  -H 'x-ya-coordinates: latitude=53.30559,longitude=50.28608' \\\r\n  --data-raw '{\"item_id\":3016841200,\"quantity\":1,\"place_slug\":\"patari_c5krg\",\"place_business\":\"restaurant\",\"item_options\":[]}'"
+					},
+					"response": []
+				},
+				{
+					"name": "10.2. Уменьшение количества блюда на -20 единиц",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Запрос успешно отработал\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{Cookie}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\": -20,\r\n    \"item_options\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://eda.yandex.ru/api/v1/cart/{{id_cart}}?longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false&placeSlug={{place}}",
+							"protocol": "https",
+							"host": [
+								"eda",
+								"yandex",
+								"ru"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"{{id_cart}}"
+							],
+							"query": [
+								{
+									"key": "soft_multi",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "longitude",
+									"value": "50.28608"
+								},
+								{
+									"key": "latitude",
+									"value": "53.30559"
+								},
+								{
+									"key": "screen",
+									"value": "menu"
+								},
+								{
+									"key": "shippingType",
+									"value": "delivery"
+								},
+								{
+									"key": "autoTranslate",
+									"value": "false"
+								},
+								{
+									"key": "placeSlug",
+									"value": "{{place}}"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl 'https://eda.yandex.ru/api/v1/cart/5185329922?soft_multi=true&longitude=50.28608&latitude=53.30559&screen=menu&shippingType=delivery&autoTranslate=false&placeSlug=patari_c5krg' \\\r\n  -X 'PUT' \\\r\n  -H 'accept: application/json, text/plain, */*' \\\r\n  -H 'accept-language: ru' \\\r\n  -H 'content-type: application/json;charset=UTF-8' \\\r\n  -b 'receive-cookie-deprecation=1; yashr=5944506941733158931; is_gdpr=0; is_gdpr_b=CNGecBDsoQI=; _ym_uid=1733159247567243224; _ym_d=1733159252; gdpr=0; font_loaded=YSv1; KIykI=1; coockoos=1; PHPSESSID=195c7b14a70346338ce74734c2297fe0; yandexuid=8989730581727528352; yuidss=8989730581727528352; ymex=1748344597.oyu.144279331733158931#2060864038.yrts.1745504038; i=PHbcd07kPWCWjTfu1c4ehQzr/Mjfg1v1a25KA4z6jjz0b6WC6V+3wt0TrCmPNWcC35CTTX59p+LqKEfmDDyXCEhYZak=; skid=3718229461745921031; Session_id=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.OTMDqGQOJtsn--zjvDgaHp8gExA; sessar=1.1201.CiAUuFCFGkgeRhxJfgmMEUYjIiyu02CnDFpXqCCFRFtfYw.afQmgQZqONMtNMc2jeHqiKCM-yvUorBVJ4xyafOYzOA; sessionid2=3:1746109323.5.0.1746109323105:7YikBQ:f01c.1.2:1|288665797.0.2.3:1746109323|3:10306829.571714.fakesign0000000000000000000; yp=2061466552.multib.1#1746714043.szm.1_25:1536x864:1536x714#2061469323.udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D; L=R34CBVNRQllGBk8LekcNc04BbFtdQQoNThAaBlcxJCICFX96AXw=.1746109323.16136.310605.63d028696131e16780555431ceb8ba05; yandex_login=yukafamily2604; ys=udn.cDrQrtC70LjRjyDQldGA0LjRgdC%2B0LLQsA%3D%3D#c_chck.2919385458; _ym_isad=1; _yasc=yHXsVTajUAk4y5CRBJLOMwnne0XBKUypp2lNK9kBN2BDUWTMB6/pHU8ZEV3po6LawcsbH+XTEzSpx2s=; bh=EkAiR29vZ2xlIENocm9tZSI7dj0iMTM1IiwgIk5vdC1BLkJyYW5kIjt2PSI4IiwgIkNocm9taXVtIjt2PSIxMzUiGgN4ODYiDjEzNS4wLjcwNDkuMTE2KgI/MDoJIldpbmRvd3MiQgYxMC4wLjBKAjY0UloiR29vZ2xlIENocm9tZSI7dj0iMTM1LjAuNzA0OS4xMTYiLCJOb3QtQS5CcmFuZCI7dj0iOC4wLjAuMCIsIkNocm9taXVtIjt2PSIxMzUuMC43MDQ5LjExNiJgyNjYwAZqHtzK4f8IktihsQOfz+HqA/v68OcN6//99g/E08+HCA==; eda_web={%22app%22:{%22analyticsSession%22:{%22id%22:%22ma8c5uek-xlstrxfmwx-psmrxqril6-xjirm04jq8c%22%2C%22start%22:1746283592%2C%22update%22:1746283638}%2C%22deliveryTime%22:null%2C%22themeVariantKey%22:%22light%22%2C%22xDeviceId%22:%22m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4%22%2C%22lat%22:53.30559%2C%22lon%22:50.28608%2C%22lang%22:null}}' \\\r\n  -H 'origin: https://eda.yandex.ru' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://eda.yandex.ru/r/patari?placeSlug=patari_c5krg' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \\\r\n  -H 'x-app-version: 17.38.2' \\\r\n  -H 'x-client-session: ma8c5uek-xlstrxfmwx-psmrxqril6-xjirm04jq8c' \\\r\n  -H 'x-device-id: m2d93xe1-bc7wzkowl1a-tbbjzmm2mv9-268modyl4u4' \\\r\n  -H 'x-platform: desktop_web' \\\r\n  -H 'x-taxi: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 platform=eats_desktop_web' \\\r\n  -H 'x-ya-coordinates: latitude=53.30559,longitude=50.28608' \\\r\n  --data-raw '{\"quantity\":3,\"item_options\":[]}'"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Cookie",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "id_cart",
+			"value": ""
+		},
+		{
+			"key": "item_id",
+			"value": "3016841243",
+			"type": "string"
+		},
+		{
+			"key": "place",
+			"value": "patari_c5krg",
+			"type": "string"
+		}
+	]
+}
